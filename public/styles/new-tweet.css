@@ -1,0 +1,17 @@
+
+main section form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main section form div {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Bungee', cursive;
+}
+
+main section form div button {
+    background-color: #4056A1;
+    color: #FFFFFF;
+}
