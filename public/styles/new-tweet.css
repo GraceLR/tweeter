@@ -1,4 +1,20 @@
 
+
+#tweet-text {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #545149;
+    background: transparent;
+    margin-bottom: 20px;
+}
+
+.new-tweet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 main section form {
     display: flex;
     flex-direction: column;
