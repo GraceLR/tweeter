@@ -14,21 +14,29 @@ article.tweet {
 article.tweet header {
     background: transparent;
     width: 689px;
-    height: 100px;
+    height: 85px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    margin-bottom: 30px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-article.tweet header > div {
+article.tweet header div.div1 {
     display: flex;
+    width: auto;
     justify-content: space-between;
+    align-items: center;
     color: slategrey;
+}
+
+.avatars {
+    margin-right: 5px;
 }
 
 article.tweet header > span {

@@ -9,8 +9,10 @@ function createTweetElement(tweetData) {
     const $tweet = $(
         `<article class="tweet">
         <header>
-        <div>
-          <span>${tweetData["user"]["avatars"]}</span>
+        <div class="div1">
+          <div class="avatars">
+          <img src="${tweetData["user"]["avatars"]}">
+          </div>
           <span>${tweetData["user"]["name"]}</span>
         </div>
         <span>${tweetData["user"]["handle"]}</span>
@@ -19,7 +21,7 @@ function createTweetElement(tweetData) {
         <span>${tweetData["content"]["text"]}</span>
       </div>
       <footer>
-        <span>${tweetData["created_at"]}</span>
+        <span>${timeago.format(`${tweetData["created_at"]}`)}</span>
         <div>
           <i class="fa-solid fa-flag"></i>
           <i class="fa-solid fa-retweet"></i>
@@ -65,6 +67,9 @@ function fetchTweets() {
 }
 
   $(() => {
+
+
+    fetchTweets();
 
     $( "#form" ).on("submit", function(event) {
 
