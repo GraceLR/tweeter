@@ -12,7 +12,7 @@ nav {
     
   }
 
-nav span {
+nav > span {
 font-family: 'Bungee', cursive;
 font-size: xx-large;
 }
@@ -23,3 +23,7 @@ nav > div {
     align-items: center;
     font-size: x-large;
     }
+
+.bold {
+  font-weight: bold;
+  }
