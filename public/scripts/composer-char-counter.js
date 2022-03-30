@@ -18,5 +18,3 @@ $(document).ready(function() {
 
     })
   });
-
-  //this.parent.thirdchild.secondchild.val()

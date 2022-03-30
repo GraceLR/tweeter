@@ -49,7 +49,7 @@
     <main class="container" id="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form class="form" action="/tweets/" method="POST">
+        <form class="form" id="form" action="/tweets" method="POST">
           <!-- <label for="tweet-text">What are you humming about?</label> -->
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?" rows="1" cols="67"></textarea>
           <div>
@@ -58,7 +58,7 @@
           </div>
         </form>
       </section>
-      <section class="tweet-container">
+      <section class="tweets-container" id="tweets-container">
         <!-- <article class="tweet">
           <header>
             <div>

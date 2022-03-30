@@ -4,18 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// const tweetData = {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png",
-//         "handle": "@SirIsaac"
-//       },
-//     "content": {
-//         "text": "If I have seen further it is by standing on the shoulders of giants"
-//       },
-//     "created_at": 1461116232227
-//  }
-
 function createTweetElement(tweetData) {
 
     const $tweet = $(
@@ -46,11 +34,50 @@ function createTweetElement(tweetData) {
 
 function renderTweets(tweets) {
 
+    const tweetsContainer = $('#tweets-container');
+    tweetsContainer.empty();
+
     for (const tweetData of tweets) {
 
-        const $tweet = createTweetElement(tweetData);
-        $('#tweets-container').append($tweet); 
+        const tweet = createTweetElement(tweetData);
+        $('#tweets-container').append(tweet); 
 
     }
 
 }
+
+function fetchTweets() {
+
+    $.ajax({
+        url: '/tweets',
+        method: 'GET',
+        dataType: 'json'
+    }).then(tweets => {
+
+        renderTweets(tweets);
+
+    }).catch(err => {
+
+        console.log(err);
+
+    });
+
+}
+
+  $(() => {
+
+    $( "#form" ).on("submit", function(event) {
+
+        event.preventDefault();
+    
+        const serialized = $(event.target).serialize();
+    
+        $.post('/tweets', serialized)
+        .then(fetchTweets())
+        .catch(err => {
+            console.log(err);
+        });
+    
+      });
+
+  });
