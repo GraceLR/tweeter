@@ -80,17 +80,21 @@ function fetchTweets() {
     $( "#form" ).on("submit", function(event) {
 
         event.preventDefault();
+
+        $("#error").removeAttr("style").hide();
     
         const serialized = $(event.target).serialize();
         const tweet = serialized.substr(5);
 
         if (tweet === '' || tweet === null) {
 
-            return alert('Tweet content can not be empty.')
+           $("#error").html('Tweet content can not be empty.');
+           $("#error").show();
 
         } else if (tweet.length > 140) {
 
-            return alert('Tweet content can not be more than 140 characters.')
+            $("#error").html('Tweet content can not be more than 140 characters.');
+            $("#error").show();
 
         }
 
