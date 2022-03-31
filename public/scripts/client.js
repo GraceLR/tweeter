@@ -76,6 +76,20 @@ function fetchTweets() {
         event.preventDefault();
     
         const serialized = $(event.target).serialize();
+        const tweet = serialized.substr(5);
+
+        if (tweet === '' || tweet === null) {
+
+            return alert('Tweet content can not be empty.')
+
+        } else if (tweet.length > 140) {
+
+            return alert('Tweet content can not be more than 140 characters.')
+
+        }
+
+        $('#tweet-text').val('');
+        $('#counter').val(140);
     
         $.post('/tweets', serialized)
         .then(fetchTweets())
