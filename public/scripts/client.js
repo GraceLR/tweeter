@@ -39,9 +39,9 @@ function renderTweets(tweets) {
     const tweetsContainer = $('#tweets-container');
     tweetsContainer.empty();
 
-    for (const tweetData of tweets) {
+    for (let i = tweets.length - 1; i >= 0; i--) {
 
-        const tweet = createTweetElement(tweetData);
+        const tweet = createTweetElement(tweets[i]);
         $('#tweets-container').append(tweet); 
 
     }
