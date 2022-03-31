@@ -32,7 +32,7 @@
     <nav>
       <span>tweeter</span>
       <div>
-        <div><span class="bold">Write</span> a new tweet</div>
+        <button type="button" id="write-new-tweet"><span class="bold">Write</span> a new tweet</button>
         <i class="fa-solid fa-angles-down" style="color: #ff0000;"></i>
       </div>
     </nav>
@@ -48,7 +48,7 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container" id="container">
-      <section class="new-tweet">
+      <section class="new-tweet" id="new-tweet">
         <h2 id="error"></h2>
         <form class="form" id="form" action="/tweets" method="POST">
           <!-- <label for="tweet-text">What are you humming about?</label> -->

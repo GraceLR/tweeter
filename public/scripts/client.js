@@ -77,7 +77,14 @@ function fetchTweets() {
 
     fetchTweets();
 
-    $( "#form" ).on("submit", function(event) {
+    $("#write-new-tweet").on("click", function(event) {
+
+        event.preventDefault();
+        $("#new-tweet").show();
+
+    })
+
+    $("#form").on("submit", function(event) {
 
         event.preventDefault();
 

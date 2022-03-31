@@ -28,3 +28,7 @@ nav > div {
 .bold {
   font-weight: bold;
   }
+
+#write-new-tweet {
+  background: transparent;
+}
