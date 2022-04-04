@@ -4,16 +4,16 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 function createTweetElement(tweetData) {
 
-    const $tweet = $(
-        `<article class="tweet">
+  const $tweet = $(
+    `<article class="tweet">
         <header>
         <div class="div1">
           <div class="avatars">
@@ -36,84 +36,85 @@ function createTweetElement(tweetData) {
       </footer>
     </article>`);
     
-    return $tweet;
+  return $tweet;
     
 }
 
 function renderTweets(tweets) {
 
-    const tweetsContainer = $('#tweets-container');
-    tweetsContainer.empty();
+  const tweetsContainer = $('#tweets-container');
+  tweetsContainer.empty();
 
-    for (let i = tweets.length - 1; i >= 0; i--) {
+  for (let i = tweets.length - 1; i >= 0; i--) {
 
-        const tweet = createTweetElement(tweets[i]);
-        $('#tweets-container').append(tweet); 
+    const tweet = createTweetElement(tweets[i]);
+    $('#tweets-container').append(tweet);
 
-    }
+  }
 
 }
 
 function fetchTweets() {
 
-    $.ajax({
-        url: '/tweets',
-        method: 'GET',
-        dataType: 'json'
-    }).then(tweets => {
+  $.ajax({
+    url: '/tweets',
+    method: 'GET',
+    dataType: 'json'
+  }).then(tweets => {
 
-        renderTweets(tweets);
+    renderTweets(tweets);
 
-    }).catch(err => {
+  }).catch(err => {
 
-        console.log(err);
+    console.log(err);
 
-    });
+  });
 
 }
 
-  $(() => {
+$(() => {
 
 
-    fetchTweets();
+  fetchTweets();
 
-    $("#write-new-tweet").on("click", function(event) {
+  $("#write-new-tweet").on("click", function(event) {
 
-        event.preventDefault();
-        $("#new-tweet").show();
-
-    })
-
-    $("#form").on("submit", function(event) {
-
-        event.preventDefault();
-
-        $("#error").removeAttr("style").hide();
-    
-        const serialized = $(event.target).serialize();
-        const tweet = serialized.substr(5);
-
-        if (tweet === '' || tweet === null) {
-
-           $("#error").html('Tweet content can not be empty.');
-           $("#error").show();
-
-        } else if (tweet.length > 140) {
-
-            $("#error").html('Tweet content can not be more than 140 characters.');
-            $("#error").show();
-
-        }
-
-        $('#tweet-text').val('');
-        $('#counter').val(140);
-    
-        $.post('/tweets', serialized)
-        .then(fetchTweets())
-        .catch(err => {
-            console.log(err);
-        });
-    
-      });
+    event.preventDefault();
+    $("#new-tweet").show();
 
   });
+
+  $("#form").on("submit", function(event) {
+
+    event.preventDefault();
+
+    $("#error").removeAttr("style").hide();
+    
+    const serialized = $(event.target).serialize();
+    const tweet = serialized.substr(5);
+
+    if (tweet === '' || tweet === null) {
+
+      $("#error").html('Tweet content can not be empty.');
+      $("#error").show();
+      return;
+
+    } else if (tweet.length > 140) {
+
+      $("#error").html('Tweet content can not be more than 140 characters.');
+      $("#error").show();
+      return;
+    }
+
+    $('#tweet-text').val('');
+    $('#counter').val(140);
+    
+    $.post('/tweets', serialized)
+      .then(fetchTweets())
+      .catch(err => {
+        console.log(err);
+      });
+    
+  });
+
+});
