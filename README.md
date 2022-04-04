@@ -16,7 +16,7 @@ Tweeter is a simple, single-page Twitter clone that uses HTML, CSS, JS, jQuery a
 
 ## Screenshots
 
-!["Desktop screen Tweeter page."]
-!["Narrow screen Tweeter page."]
+!["Desktop screen Tweeter page."](https://github.com/GraceLR/tweeter/blob/master/docs/desktop-screen.png)
+!["Narrow screen Tweeter page."](https://github.com/GraceLR/tweeter/blob/master/docs/narrow-screen.png)
 
 
