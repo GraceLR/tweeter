@@ -13,3 +13,10 @@ Tweeter is a simple, single-page Twitter clone that uses HTML, CSS, JS, jQuery a
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Desktop screen Tweeter page."]
+!["Narrow screen Tweeter page."]
+
+
