@@ -6,7 +6,6 @@ const escape = function(str) {
 };
 
 function createTweetElement(tweetData) {
-
   const $tweet = $(
     `<article class="tweet">
         <header>
@@ -29,87 +28,56 @@ function createTweetElement(tweetData) {
           <i class="fa-solid fa-heart"></i>
         </div>
       </footer>
-    </article>`);
-    
-  return $tweet;
-    
+    </article>`);  
+  return $tweet;   
 }
 
 function renderTweets(tweets) {
-
   const tweetsContainer = $('#tweets-container');
   tweetsContainer.empty();
-
   for (let i = tweets.length - 1; i >= 0; i--) {
-
     const tweet = createTweetElement(tweets[i]);
     $('#tweets-container').append(tweet);
-
   }
-
 }
 
 function fetchTweets() {
-
   $.ajax({
     url: '/tweets',
     method: 'GET',
     dataType: 'json'
   }).then(tweets => {
-
     renderTweets(tweets);
-
   }).catch(err => {
-
     console.log(err);
-
   });
-
 }
-
 $(() => {
-
   fetchTweets();
-
   $("#write-new-tweet").on("click", function(event) {
-
     event.preventDefault();
     $("#new-tweet").show();
-
   });
-
   $("#form").on("submit", function(event) {
-
     event.preventDefault();
-
     $("#error").removeAttr("style").hide();
-    
     const serialized = $(event.target).serialize();
     const tweet = serialized.substr(5);
-
     if (tweet === '' || tweet === null) {
-
       $("#error").html('Tweet content can not be empty.');
       $("#error").show();
       return;
-
     } else if (tweet.length > 140) {
-
       $("#error").html('Tweet content can not be more than 140 characters.');
       $("#error").show();
-      return;
-      
+      return;   
     }
-
     $('#tweet-text').val('');
-    $('#counter').val(140);
-    
+    $('#counter').val(140);   
     $.post('/tweets', serialized)
       .then(fetchTweets)
       .catch(err => {
         console.log(err);
-      });
-    
+      });  
   });
-
 });
