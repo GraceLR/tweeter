@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+
   $('#tweet-text').on('input', function() {
 
     const remLen = 140 - $(this).val().length;
@@ -17,4 +18,5 @@ $(document).ready(function() {
     }
 
   });
+  
 });

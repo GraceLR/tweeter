@@ -1,8 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
 const escape = function(str) {
   let div = document.createElement("div");
@@ -74,7 +69,6 @@ function fetchTweets() {
 
 $(() => {
 
-
   fetchTweets();
 
   $("#write-new-tweet").on("click", function(event) {
@@ -104,13 +98,14 @@ $(() => {
       $("#error").html('Tweet content can not be more than 140 characters.');
       $("#error").show();
       return;
+      
     }
 
     $('#tweet-text').val('');
     $('#counter').val(140);
     
     $.post('/tweets', serialized)
-      .then(fetchTweets())
+      .then(fetchTweets)
       .catch(err => {
         console.log(err);
       });
